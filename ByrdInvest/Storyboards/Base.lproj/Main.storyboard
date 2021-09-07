@@ -106,19 +106,19 @@
             </objects>
             <point key="canvasLocation" x="-839" y="730"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--List Tab Bar View Controller-->
         <scene sceneID="eUh-bc-5XD">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1fT-9Q-Hdr" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1fT-9Q-Hdr" customClass="ListTabBarViewController" customModule="ByrdInvest" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1bL-eP-AFJ">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" id="Qdh-zl-Thz"/>
-                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" id="ykE-gK-BUm"/>
-                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" id="JoE-Qc-dRn"/>
+                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="gainers" id="Qdh-zl-Thz"/>
+                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="active" id="ykE-gK-BUm"/>
+                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="loosers" id="JoE-Qc-dRn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3md-7p-ZfH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -127,7 +127,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qdh-zl-Thz"/>
+        <segue reference="JoE-Qc-dRn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="star.fill" catalog="system" width="128" height="116"/>

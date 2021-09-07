@@ -10,7 +10,9 @@ import Foundation
 
 class IEXDataManager {
 	
-	let baseUrl = ""
+	let baseUrl = "https://cloud.iexapis.com/stable"
 	let token = ""
+	
+	
 	
 }

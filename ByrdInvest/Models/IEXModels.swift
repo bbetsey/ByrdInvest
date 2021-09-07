@@ -8,18 +8,23 @@
 import Foundation
 
 
-struct Company {
+struct ListElem {
 	
-	let name: String
-	let ticker: String
+	let companyName: String
+	let symbol: String
+	let open: Double
+	let close: Double
 	
-	static func getCompanies() -> [Company] {
+	var priceChange: Double {
+		(open - close) / (open / 100)
+	}
+	
+	static func getList() -> [ListElem] {
 		[
-			Company(name: "Apple", ticker: "AAPL"),
-			Company(name: "Microsoft", ticker: "MSFT"),
-			Company(name: "Google", ticker: "GOOG"),
-			Company(name: "Amazon", ticker: "AMZN"),
-			Company(name: "Netflix", ticker: "NFLX")
+			ListElem(companyName: "Apple", symbol: "AAPL", open: 153.3, close: 154.1),
+			ListElem(companyName: "Google", symbol: "GOOG", open: 2345.5, close: 2360.1),
+			ListElem(companyName: "Tesla", symbol: "TSLA", open: 632.56, close: 665.7)
 		]
 	}
+	
 }
