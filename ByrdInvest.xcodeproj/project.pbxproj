@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893A26E818130032C58C /* AppDelegate.swift */; };
 		3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893C26E818130032C58C /* SceneDelegate.swift */; };
-		3AC5893F26E818130032C58C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893E26E818130032C58C /* ViewController.swift */; };
 		3AC5894226E818130032C58C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894026E818130032C58C /* Main.storyboard */; };
 		3AC5894526E818130032C58C /* ByrdInvest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5894326E818130032C58C /* ByrdInvest.xcdatamodeld */; };
 		3AC5894726E818150032C58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894626E818150032C58C /* Assets.xcassets */; };
 		3AC5894A26E818150032C58C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894826E818150032C58C /* LaunchScreen.storyboard */; };
 		3AC5895526E818150032C58C /* ByrdInvestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5895426E818150032C58C /* ByrdInvestTests.swift */; };
 		3AC5896026E818150032C58C /* ByrdInvestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5895F26E818150032C58C /* ByrdInvestUITests.swift */; };
+		3AC5897326E81C390032C58C /* IEXModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897226E81C390032C58C /* IEXModels.swift */; };
+		3AC5897526E81C600032C58C /* IEXDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897426E81C600032C58C /* IEXDataManager.swift */; };
+		3AC5897726E81CA90032C58C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897626E81CA90032C58C /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		3AC5893726E818130032C58C /* ByrdInvest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ByrdInvest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC5893A26E818130032C58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC5893C26E818130032C58C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3AC5893E26E818130032C58C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3AC5894126E818130032C58C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AC5894426E818130032C58C /* ByrdInvest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ByrdInvest.xcdatamodel; sourceTree = "<group>"; };
 		3AC5894626E818150032C58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,9 @@
 		3AC5895B26E818150032C58C /* ByrdInvestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ByrdInvestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC5895F26E818150032C58C /* ByrdInvestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByrdInvestUITests.swift; sourceTree = "<group>"; };
 		3AC5896126E818150032C58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC5897226E81C390032C58C /* IEXModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEXModels.swift; sourceTree = "<group>"; };
+		3AC5897426E81C600032C58C /* IEXDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEXDataManager.swift; sourceTree = "<group>"; };
+		3AC5897626E81CA90032C58C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +105,12 @@
 		3AC5893926E818130032C58C /* ByrdInvest */ = {
 			isa = PBXGroup;
 			children = (
-				3AC5893A26E818130032C58C /* AppDelegate.swift */,
-				3AC5893C26E818130032C58C /* SceneDelegate.swift */,
-				3AC5893E26E818130032C58C /* ViewController.swift */,
-				3AC5894026E818130032C58C /* Main.storyboard */,
+				3AC5897126E8190F0032C58C /* Services */,
+				3AC5897026E819080032C58C /* Models */,
+				3AC5896D26E818BE0032C58C /* App */,
+				3AC5896F26E818F40032C58C /* Controllers */,
+				3AC5896E26E818E60032C58C /* Storyboards */,
 				3AC5894626E818150032C58C /* Assets.xcassets */,
-				3AC5894826E818150032C58C /* LaunchScreen.storyboard */,
-				3AC5894B26E818150032C58C /* Info.plist */,
 				3AC5894326E818130032C58C /* ByrdInvest.xcdatamodeld */,
 			);
 			path = ByrdInvest;
@@ -129,6 +132,49 @@
 				3AC5896126E818150032C58C /* Info.plist */,
 			);
 			path = ByrdInvestUITests;
+			sourceTree = "<group>";
+		};
+		3AC5896D26E818BE0032C58C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5893A26E818130032C58C /* AppDelegate.swift */,
+				3AC5893C26E818130032C58C /* SceneDelegate.swift */,
+				3AC5894B26E818150032C58C /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3AC5896E26E818E60032C58C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5894026E818130032C58C /* Main.storyboard */,
+				3AC5894826E818150032C58C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3AC5896F26E818F40032C58C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5897626E81CA90032C58C /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3AC5897026E819080032C58C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5897226E81C390032C58C /* IEXModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3AC5897126E8190F0032C58C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5897426E81C600032C58C /* IEXDataManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC5893F26E818130032C58C /* ViewController.swift in Sources */,
+				3AC5897526E81C600032C58C /* IEXDataManager.swift in Sources */,
+				3AC5897326E81C390032C58C /* IEXModels.swift in Sources */,
+				3AC5897726E81CA90032C58C /* ListViewController.swift in Sources */,
 				3AC5894526E818130032C58C /* ByrdInvest.xcdatamodeld in Sources */,
 				3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */,
 				3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */,
@@ -442,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QX89BX85GD;
-				INFOPLIST_FILE = ByrdInvest/Info.plist;
+				INFOPLIST_FILE = ByrdInvest/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,7 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QX89BX85GD;
-				INFOPLIST_FILE = ByrdInvest/Info.plist;
+				INFOPLIST_FILE = ByrdInvest/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
