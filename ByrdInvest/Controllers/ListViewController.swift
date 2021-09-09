@@ -9,20 +9,24 @@ import UIKit
 
 class ListViewController: UITableViewController {
 	
-	let list = ListElem.getList()
-
+	var list: [ListElem] = []
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		let nib = UINib(nibName: "TickerPreviewCell", bundle: nil)
 		tableView.register(nib, forCellReuseIdentifier: "tickerPreviewCell")
-
+		
+		let dataManager = IEXDataManager()
+		dataManager.getList(for: "gainers") { list in
+			DispatchQueue.main.async {
+				self.list = list
+				self.tableView.reloadData()
+			}
+			
+		}
 		title = "Gainers"
-
-
     }
-
-    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		list.count
@@ -37,9 +41,19 @@ class ListViewController: UITableViewController {
 		let company = list[indexPath.row]
 		cell.nameLabel.text = company.companyName
 		cell.tickerLabel.text = company.symbol
-		cell.priceLabel.text = "$\(company.close)"
+		cell.priceLabel.text = "$\(company.latestPrice)"
 		cell.changeLabel.text = "%\(abs(company.priceChange))"
-		cell.logo.image = UIImage(named: company.symbol)
+		
+		if let image = UIImage(named: company.symbol) {
+			cell.logo.image = image
+		} else {
+			IEXDataManager().getLogo(for: company.symbol) { image in
+				DispatchQueue.main.async {
+					cell.logo.image = image
+					self.tableView.reloadData()
+				}
+			}
+		}
 		
 		cell.changeLabel.textColor =
 			company.priceChange < 0
@@ -48,42 +62,8 @@ class ListViewController: UITableViewController {
 		
         return cell
     }
+
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -96,3 +76,4 @@ class ListViewController: UITableViewController {
     */
 
 }
+

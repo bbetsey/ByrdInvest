@@ -8,23 +8,28 @@
 import Foundation
 
 
-struct ListElem {
+struct ListElem: Decodable {
 	
 	let companyName: String
 	let symbol: String
-	let open: Double
-	let close: Double
+	let latestPrice: Double
+	let previousClose: Double
 	
 	var priceChange: Double {
-		Double(round((open - close) / (open / 100) * 100) / 100)
+		Double(round((latestPrice - previousClose) / (previousClose / 100) * 100) / 100)
 	}
 	
 	static func getList() -> [ListElem] {
 		[
-			ListElem(companyName: "Apple", symbol: "AAPL", open: 153.3, close: 154.1),
-			ListElem(companyName: "Google", symbol: "GOOG", open: 2345.5, close: 2360.1),
-			ListElem(companyName: "Tesla", symbol: "TSLA", open: 632.56, close: 665.7)
+			ListElem(companyName: "Apple", symbol: "AAPL", latestPrice: 153.3, previousClose: 154.1),
+			ListElem(companyName: "Google", symbol: "GOOG", latestPrice: 2345.5, previousClose: 2360.1),
+			ListElem(companyName: "Tesla", symbol: "TSLA", latestPrice: 632.56, previousClose: 665.7),
+			ListElem(companyName: "Netflix", symbol: "NFLX", latestPrice: 602.16, previousClose: 600.5)
 		]
 	}
 	
+}
+
+struct Logo: Decodable {
+	let url: String
 }

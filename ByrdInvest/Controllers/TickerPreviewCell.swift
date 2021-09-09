@@ -20,13 +20,13 @@ class TickerPreviewCell: UITableViewCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
         
-		logo.layer.cornerRadius = 15
+		logo.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
+
+
