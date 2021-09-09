@@ -9,38 +9,46 @@ import UIKit
 
 class ListViewController: UITableViewController {
 	
-	
+	let list = ListElem.getList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		let nib = UINib(nibName: "TickerPreviewCell", bundle: nil)
+		tableView.register(nib, forCellReuseIdentifier: "tickerPreviewCell")
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+		title = "Gainers"
 
 
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+		list.count
     }
 
-    /*
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		70
+	}
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tickerPreviewCell", for: indexPath) as! TickerPreviewCell
+		let company = list[indexPath.row]
+		cell.nameLabel.text = company.companyName
+		cell.tickerLabel.text = company.symbol
+		cell.priceLabel.text = "$\(company.close)"
+		cell.changeLabel.text = "%\(abs(company.priceChange))"
+		cell.logo.image = UIImage(named: company.symbol)
+		
+		cell.changeLabel.textColor =
+			company.priceChange < 0
+				? .red
+				: .green
+		
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

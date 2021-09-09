@@ -14,25 +14,12 @@ class ListTabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-    
 
-    
 	//MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-		switch segue.identifier {
-			case "gainers":
-				
-			case "active":
-				<#code#>
-			case "loosers":
-				<#code#>
-			case .none:
-				<#code#>
-			case .some(_):
-				<#code#>
-		}
+		
     }
     
 

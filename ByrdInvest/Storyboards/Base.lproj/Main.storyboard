@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1fT-9Q-Hdr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Gainers-->
         <scene sceneID="Du2-As-Xt2">
             <objects>
                 <tableViewController id="88W-QN-Zrs" customClass="ListViewController" customModule="ByrdInvest" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,16 +81,15 @@
                             <outlet property="delegate" destination="88W-QN-Zrs" id="raM-fH-1Xk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="XpQ-iZ-TR3"/>
+                    <navigationItem key="navigationItem" title="Gainers" id="XpQ-iZ-TR3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPB-aB-sgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="730"/>
+            <point key="canvasLocation" x="92.753623188405811" y="729.91071428571422"/>
         </scene>
         <!--Active-->
         <scene sceneID="LXZ-Mn-O67">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kRf-1u-0Zg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGj-75-NIg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Active" image="star.fill" catalog="system" id="wfJ-NW-Iyz"/>
                     <toolbarItems/>
@@ -103,21 +102,21 @@
                         <segue destination="88W-QN-Zrs" kind="relationship" relationship="rootViewController" id="qOX-4z-v5V"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRf-1u-0Zg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-839" y="730"/>
         </scene>
-        <!--List Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="eUh-bc-5XD">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1fT-9Q-Hdr" customClass="ListTabBarViewController" customModule="ByrdInvest" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1fT-9Q-Hdr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1bL-eP-AFJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="gainers" id="Qdh-zl-Thz"/>
-                        <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="active" id="ykE-gK-BUm"/>
                         <segue destination="SGj-75-NIg" kind="relationship" relationship="viewControllers" destinationCreationSelector="loosers" id="JoE-Qc-dRn"/>
                     </connections>
                 </tabBarController>
@@ -126,9 +125,6 @@
             <point key="canvasLocation" x="-1749" y="730"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="JoE-Qc-dRn"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">

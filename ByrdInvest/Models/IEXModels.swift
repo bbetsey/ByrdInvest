@@ -16,7 +16,7 @@ struct ListElem {
 	let close: Double
 	
 	var priceChange: Double {
-		(open - close) / (open / 100)
+		Double(round((open - close) / (open / 100) * 100) / 100)
 	}
 	
 	static func getList() -> [ListElem] {

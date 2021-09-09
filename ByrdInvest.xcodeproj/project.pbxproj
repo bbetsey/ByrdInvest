@@ -18,7 +18,8 @@
 		3AC5897326E81C390032C58C /* IEXModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897226E81C390032C58C /* IEXModels.swift */; };
 		3AC5897526E81C600032C58C /* IEXDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897426E81C600032C58C /* IEXDataManager.swift */; };
 		3AC5897726E81CA90032C58C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897626E81CA90032C58C /* ListViewController.swift */; };
-		3AC5897926E823300032C58C /* ListTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897826E823300032C58C /* ListTabBarViewController.swift */; };
+		3AC5897E26E8BD850032C58C /* TickerPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5897C26E8BD850032C58C /* TickerPreviewCell.swift */; };
+		3AC5897F26E8BD850032C58C /* TickerPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5897D26E8BD850032C58C /* TickerPreviewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,8 @@
 		3AC5897226E81C390032C58C /* IEXModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEXModels.swift; sourceTree = "<group>"; };
 		3AC5897426E81C600032C58C /* IEXDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEXDataManager.swift; sourceTree = "<group>"; };
 		3AC5897626E81CA90032C58C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		3AC5897826E823300032C58C /* ListTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabBarViewController.swift; sourceTree = "<group>"; };
+		3AC5897C26E8BD850032C58C /* TickerPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerPreviewCell.swift; sourceTree = "<group>"; };
+		3AC5897D26E8BD850032C58C /* TickerPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TickerPreviewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				3AC5897626E81CA90032C58C /* ListViewController.swift */,
-				3AC5897826E823300032C58C /* ListTabBarViewController.swift */,
+				3AC5897C26E8BD850032C58C /* TickerPreviewCell.swift */,
+				3AC5897D26E8BD850032C58C /* TickerPreviewCell.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				3AC5894A26E818150032C58C /* LaunchScreen.storyboard in Resources */,
 				3AC5894726E818150032C58C /* Assets.xcassets in Resources */,
+				3AC5897F26E8BD850032C58C /* TickerPreviewCell.xib in Resources */,
 				3AC5894226E818130032C58C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,9 +317,9 @@
 				3AC5897526E81C600032C58C /* IEXDataManager.swift in Sources */,
 				3AC5897326E81C390032C58C /* IEXModels.swift in Sources */,
 				3AC5897726E81CA90032C58C /* ListViewController.swift in Sources */,
-				3AC5897926E823300032C58C /* ListTabBarViewController.swift in Sources */,
 				3AC5894526E818130032C58C /* ByrdInvest.xcdatamodeld in Sources */,
 				3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */,
+				3AC5897E26E8BD850032C58C /* TickerPreviewCell.swift in Sources */,
 				3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
