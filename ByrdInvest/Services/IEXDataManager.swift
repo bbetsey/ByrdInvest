@@ -19,6 +19,7 @@ class IEXDataManager {
 		guard let url = URL(string: urlString) else { return }
 		let task = URLSession.shared.dataTask(with: url) { (data, response, error ) in
 			guard error == nil else {
+				print("Hlelo")
 				print(error?.localizedDescription ?? "noDesc")
 				return
 			}
@@ -36,11 +37,15 @@ class IEXDataManager {
 	func getLogo(for ticker: String, completion: @escaping (UIImage) -> Void) {
 		var urlString = ""
 		getLogoUrl(for: ticker) { result in
+			DispatchQueue.main.async {
 				urlString = result
+			}
 		}
+		print(urlString + "heee")
 		guard let url = URL(string: urlString) else { return }
 		let task = URLSession.shared.dataTask(with: url) { (data, response, error ) in
 			guard error == nil else {
+				completion(UIImage(named: "MOON")!)
 				print(error?.localizedDescription ?? "noDesc")
 				return
 			}

@@ -18,7 +18,7 @@ class ListViewController: UITableViewController {
 		tableView.register(nib, forCellReuseIdentifier: "tickerPreviewCell")
 		
 		let dataManager = IEXDataManager()
-		dataManager.getList(for: "gainers") { list in
+		dataManager.getList(for: "mostactive") { list in
 			DispatchQueue.main.async {
 				self.list = list
 				self.tableView.reloadData()
@@ -38,6 +38,7 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tickerPreviewCell", for: indexPath) as! TickerPreviewCell
+		guard !self.list.isEmpty else { return cell }
 		let company = list[indexPath.row]
 		cell.nameLabel.text = company.companyName
 		cell.tickerLabel.text = company.symbol
@@ -47,18 +48,13 @@ class ListViewController: UITableViewController {
 		if let image = UIImage(named: company.symbol) {
 			cell.logo.image = image
 		} else {
-			IEXDataManager().getLogo(for: company.symbol) { image in
-				DispatchQueue.main.async {
-					cell.logo.image = image
-					self.tableView.reloadData()
-				}
-			}
+			cell.logo.image = UIImage(named: "MOON")
 		}
 		
 		cell.changeLabel.textColor =
 			company.priceChange < 0
-				? .red
-				: .green
+			? .red
+			: .systemGreen
 		
         return cell
     }
