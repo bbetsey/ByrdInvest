@@ -54,7 +54,7 @@ class ListViewController: UITableViewController {
 		cell.tickerLabel.text = company.symbol
 		cell.priceLabel.text = "$\(company.latestPrice)"
 		cell.changeLabel.text = "%\(abs(company.priceChange))"
-		cell.accessoryType = .disclosureIndicator
+//		cell.accessoryType = .disclosureIndicator
 		
 		if let image = UIImage(named: company.symbol) {
 			cell.logo.image = image
@@ -70,6 +70,14 @@ class ListViewController: UITableViewController {
         return cell
     }
 	
+	
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let action = UIContextualAction(style: .normal, title: "Favourite") { _, _, completion in
+			tableView.reloadRows(at: [indexPath], with: .automatic)
+			completion(true)
+		}
+		return UISwipeActionsConfiguration(actions: [action])
+	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
