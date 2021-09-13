@@ -14,19 +14,28 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		tableView.refreshControl = UIRefreshControl()
+		tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Update...")
+
+		tableView.refreshControl?.addTarget(self, action: #selector(updateData), for: .valueChanged)
+		
 		let nib = UINib(nibName: "TickerPreviewCell", bundle: nil)
 		tableView.register(nib, forCellReuseIdentifier: "tickerPreviewCell")
 		
-		let dataManager = IEXDataManager()
-		dataManager.getList(for: "mostactive") { list in
-			DispatchQueue.main.async {
-				self.list = list
-				self.tableView.reloadData()
-			}
-			
-		}
+		updateData()
 		title = "Gainers"
     }
+	
+	@objc private func updateData() {
+		let dataManager = IEXDataManager()
+		dataManager.getList(for: "mostactive") { list in
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.list = list
+				self.tableView.reloadData()
+				self.refreshControl?.endRefreshing()
+			}
+		}
+	}
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		list.count
@@ -39,11 +48,13 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tickerPreviewCell", for: indexPath) as! TickerPreviewCell
 		guard !self.list.isEmpty else { return cell }
+		
 		let company = list[indexPath.row]
 		cell.nameLabel.text = company.companyName
 		cell.tickerLabel.text = company.symbol
 		cell.priceLabel.text = "$\(company.latestPrice)"
 		cell.changeLabel.text = "%\(abs(company.priceChange))"
+		cell.accessoryType = .disclosureIndicator
 		
 		if let image = UIImage(named: company.symbol) {
 			cell.logo.image = image
@@ -58,7 +69,11 @@ class ListViewController: UITableViewController {
 		
         return cell
     }
-
+	
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
     
 
     /*
