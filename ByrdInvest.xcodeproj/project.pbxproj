@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3B406C26F2A5200009F572 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B406B26F2A5200009F572 /* MainCollectionViewController.swift */; };
+		3A3B407B26F37D320009F572 /* StockListsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B407926F37D320009F572 /* StockListsCollectionViewCell.swift */; };
+		3A3B407C26F37D320009F572 /* StockListsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3B407A26F37D320009F572 /* StockListsCollectionViewCell.xib */; };
+		3A3B408126F37DB90009F572 /* LIstElemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B407F26F37DB90009F572 /* LIstElemViewCell.swift */; };
+		3A3B408226F37DB90009F572 /* LIstElemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3B408026F37DB90009F572 /* LIstElemViewCell.xib */; };
+		3A76843B26F3B1FD00FA21B2 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76843A26F3B1FD00FA21B2 /* MainTableViewController.swift */; };
+		3A76844126F3DAF200FA21B2 /* ListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76843F26F3DAF200FA21B2 /* ListsTableViewCell.swift */; };
+		3A76844226F3DAF200FA21B2 /* ListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A76844026F3DAF200FA21B2 /* ListsTableViewCell.xib */; };
+		3A76844526F3E00400FA21B2 /* ListPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76844326F3E00400FA21B2 /* ListPreviewCell.swift */; };
+		3A76844626F3E00400FA21B2 /* ListPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A76844426F3E00400FA21B2 /* ListPreviewCell.xib */; };
 		3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893A26E818130032C58C /* AppDelegate.swift */; };
 		3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893C26E818130032C58C /* SceneDelegate.swift */; };
 		3AC5894226E818130032C58C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894026E818130032C58C /* Main.storyboard */; };
@@ -40,6 +50,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A3B406B26F2A5200009F572 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		3A3B407926F37D320009F572 /* StockListsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListsCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A3B407A26F37D320009F572 /* StockListsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockListsCollectionViewCell.xib; sourceTree = "<group>"; };
+		3A3B407F26F37DB90009F572 /* LIstElemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LIstElemViewCell.swift; sourceTree = "<group>"; };
+		3A3B408026F37DB90009F572 /* LIstElemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LIstElemViewCell.xib; sourceTree = "<group>"; };
+		3A76843A26F3B1FD00FA21B2 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		3A76843F26F3DAF200FA21B2 /* ListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsTableViewCell.swift; sourceTree = "<group>"; };
+		3A76844026F3DAF200FA21B2 /* ListsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListsTableViewCell.xib; sourceTree = "<group>"; };
+		3A76844326F3E00400FA21B2 /* ListPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPreviewCell.swift; sourceTree = "<group>"; };
+		3A76844426F3E00400FA21B2 /* ListPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPreviewCell.xib; sourceTree = "<group>"; };
 		3AC5893726E818130032C58C /* ByrdInvest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ByrdInvest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC5893A26E818130032C58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC5893C26E818130032C58C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +106,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A3B407D26F37D610009F572 /* Main Collections */ = {
+			isa = PBXGroup;
+			children = (
+				3A3B406B26F2A5200009F572 /* MainCollectionViewController.swift */,
+				3A3B407E26F37D8E0009F572 /* Stock Lists */,
+			);
+			path = "Main Collections";
+			sourceTree = "<group>";
+		};
+		3A3B407E26F37D8E0009F572 /* Stock Lists */ = {
+			isa = PBXGroup;
+			children = (
+				3A3B407926F37D320009F572 /* StockListsCollectionViewCell.swift */,
+				3A3B407A26F37D320009F572 /* StockListsCollectionViewCell.xib */,
+				3A3B407F26F37DB90009F572 /* LIstElemViewCell.swift */,
+				3A3B408026F37DB90009F572 /* LIstElemViewCell.xib */,
+			);
+			path = "Stock Lists";
+			sourceTree = "<group>";
+		};
+		3A76843C26F3B20B00FA21B2 /* Main Table */ = {
+			isa = PBXGroup;
+			children = (
+				3A76843A26F3B1FD00FA21B2 /* MainTableViewController.swift */,
+				3A76843F26F3DAF200FA21B2 /* ListsTableViewCell.swift */,
+				3A76844026F3DAF200FA21B2 /* ListsTableViewCell.xib */,
+				3A76844326F3E00400FA21B2 /* ListPreviewCell.swift */,
+				3A76844426F3E00400FA21B2 /* ListPreviewCell.xib */,
+			);
+			path = "Main Table";
+			sourceTree = "<group>";
+		};
 		3AC5892E26E818130032C58C = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +215,8 @@
 				3AC5897626E81CA90032C58C /* ListViewController.swift */,
 				3AC5897C26E8BD850032C58C /* TickerPreviewCell.swift */,
 				3AC5897D26E8BD850032C58C /* TickerPreviewCell.xib */,
+				3A3B407D26F37D610009F572 /* Main Collections */,
+				3A76843C26F3B20B00FA21B2 /* Main Table */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,9 +341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AC5894A26E818150032C58C /* LaunchScreen.storyboard in Resources */,
+				3A3B407C26F37D320009F572 /* StockListsCollectionViewCell.xib in Resources */,
+				3A76844626F3E00400FA21B2 /* ListPreviewCell.xib in Resources */,
 				3AC5894726E818150032C58C /* Assets.xcassets in Resources */,
 				3AC5897F26E8BD850032C58C /* TickerPreviewCell.xib in Resources */,
+				3A76844226F3DAF200FA21B2 /* ListsTableViewCell.xib in Resources */,
 				3AC5894226E818130032C58C /* Main.storyboard in Resources */,
+				3A3B408226F37DB90009F572 /* LIstElemViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,13 +372,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A76843B26F3B1FD00FA21B2 /* MainTableViewController.swift in Sources */,
 				3AC5897526E81C600032C58C /* IEXDataManager.swift in Sources */,
+				3A3B406C26F2A5200009F572 /* MainCollectionViewController.swift in Sources */,
 				3AC5897326E81C390032C58C /* IEXModels.swift in Sources */,
 				3AC5897726E81CA90032C58C /* ListViewController.swift in Sources */,
+				3A76844126F3DAF200FA21B2 /* ListsTableViewCell.swift in Sources */,
 				3AC5894526E818130032C58C /* ByrdInvest.xcdatamodeld in Sources */,
+				3A3B408126F37DB90009F572 /* LIstElemViewCell.swift in Sources */,
 				3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */,
 				3AC5897E26E8BD850032C58C /* TickerPreviewCell.swift in Sources */,
+				3A3B407B26F37D320009F572 /* StockListsCollectionViewCell.swift in Sources */,
 				3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */,
+				3A76844526F3E00400FA21B2 /* ListPreviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

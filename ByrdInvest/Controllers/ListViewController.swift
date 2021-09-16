@@ -54,7 +54,6 @@ class ListViewController: UITableViewController {
 		cell.tickerLabel.text = company.symbol
 		cell.priceLabel.text = "$\(company.latestPrice)"
 		cell.changeLabel.text = "%\(abs(company.priceChange))"
-//		cell.accessoryType = .disclosureIndicator
 		
 		if let image = UIImage(named: company.symbol) {
 			cell.logo.image = image

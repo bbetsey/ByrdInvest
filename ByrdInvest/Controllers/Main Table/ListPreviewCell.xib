@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ListPreviewCell" id="gTV-IL-0wX" customClass="ListPreviewCell" customModule="ByrdInvest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="215"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="339" height="215"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z58-2F-pzn">
+                        <rect key="frame" x="16" y="178.5" width="307" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MSFT" translatesAutoresizingMaskIntoConstraints="NO" id="nnw-g1-SNp">
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="215"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="AccentColor"/>
+            <constraints>
+                <constraint firstItem="nnw-g1-SNp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7VA-m0-0oI"/>
+                <constraint firstAttribute="bottom" secondItem="nnw-g1-SNp" secondAttribute="bottom" id="QRr-DX-E4s"/>
+                <constraint firstItem="z58-2F-pzn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Xfu-qU-z1r"/>
+                <constraint firstAttribute="trailing" secondItem="z58-2F-pzn" secondAttribute="trailing" constant="16" id="eKF-4Q-Luu"/>
+                <constraint firstAttribute="trailing" secondItem="nnw-g1-SNp" secondAttribute="trailing" id="fCb-pX-x3V"/>
+                <constraint firstAttribute="bottom" secondItem="z58-2F-pzn" secondAttribute="bottom" constant="16" id="fL5-Mr-HqK"/>
+                <constraint firstItem="nnw-g1-SNp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yyn-1i-y8Q"/>
+            </constraints>
+            <size key="customSize" width="339" height="215"/>
+            <connections>
+                <outlet property="listName" destination="z58-2F-pzn" id="1bp-9N-BEd"/>
+                <outlet property="listPreviewImage" destination="nnw-g1-SNp" id="oZA-Py-jrH"/>
+            </connections>
+            <point key="canvasLocation" x="251.44927536231887" y="232.03125"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MSFT" width="900" height="900"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
