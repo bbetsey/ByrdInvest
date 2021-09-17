@@ -24,7 +24,7 @@ struct ListElem: Decodable {
 			ListElem(companyName: "Apple", symbol: "AAPL", latestPrice: 153.3, previousClose: 154.1),
 			ListElem(companyName: "Google", symbol: "GOOG", latestPrice: 2345.5, previousClose: 2360.1),
 			ListElem(companyName: "Tesla", symbol: "TSLA", latestPrice: 632.56, previousClose: 665.7),
-			ListElem(companyName: "Netflix", symbol: "NFLX", latestPrice: 602.16, previousClose: 600.5)
+			ListElem(companyName: "Microsoft", symbol: "MSFT", latestPrice: 602.16, previousClose: 600.5)
 		]
 	}
 	
@@ -32,4 +32,18 @@ struct ListElem: Decodable {
 
 struct Logo: Decodable {
 	let url: String
+}
+
+struct ListPreview {
+	
+	let name: String
+	
+	static func getListsPreview() -> [ListPreview] {
+		[
+			ListPreview(name: "Gainers"),
+			ListPreview(name: "Loosers"),
+			ListPreview(name: "Most Active")
+		]
+	}
+	
 }

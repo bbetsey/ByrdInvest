@@ -2,50 +2,58 @@
 //  MainTableViewController.swift
 //  ByrdInvest
 //
-//  Created by Антон Тропин on 16.09.2021.
+//  Created by Антон Тропин on 17.09.2021.
 //
 
 import UIKit
 
-private let cellId = "ListsTableViewCell"
+private let listsCellID = "ListsCollectionViewCell"
+private let tickerCellID = "TickerPreviewCell"
+
 
 class MainTableViewController: UITableViewController {
 
-	@IBOutlet var headerImage: UIImageView!
+	@IBOutlet var listsCollectionView: UICollectionView!
+	@IBOutlet var listsCollectionLayout: UICollectionViewFlowLayout!
+
+	let lists = ListPreview.getListsPreview()
+	let tickers = ListElem.getList()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		navigationController?.title = "Main"
+
+		// CollectionView Setup
+		listsCollectionView.delegate = self
+		listsCollectionView.dataSource = self
+		listsCollectionView.register(UINib(nibName: listsCellID, bundle: nil), forCellWithReuseIdentifier: listsCellID)
+		
+		// TableView Setup
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.register(UINib(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		tableView.register(UINib(nibName: tickerCellID, bundle: nil), forCellReuseIdentifier: tickerCellID)
+		tableView.rowHeight = UITableView.automaticDimension
     }
 
+	
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+		tickers.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ListsTableViewCell else { return UITableViewCell() }
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }
 
-        
+		cell.setup(ticker: tickers[indexPath.row])
 
-        return cell
+		return cell
     }
     
 
@@ -94,4 +102,51 @@ class MainTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+
+//MARK: - CollectionView Delegate
+
+extension MainTableViewController: UICollectionViewDelegate {
+	
+}
+
+
+//MARK: - CollectionView DataSource
+
+extension MainTableViewController: UICollectionViewDataSource {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		lists.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: listsCellID, for: indexPath) as? ListsCollectionViewCell else { return UICollectionViewCell() }
+		cell.setup(list: lists[indexPath.row])
+		return cell
+	}
+	
+	
+}
+
+
+//MARK: - CollectionView FlowLayout
+
+extension MainTableViewController: UICollectionViewDelegateFlowLayout {
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		CGSize(width: 220, height: 175)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		8
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		8
+	}
 }

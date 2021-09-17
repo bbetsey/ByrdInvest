@@ -16,7 +16,6 @@ class ListViewController: UITableViewController {
 		
 		tableView.refreshControl = UIRefreshControl()
 		tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Update...")
-
 		tableView.refreshControl?.addTarget(self, action: #selector(updateData), for: .valueChanged)
 		
 		let nib = UINib(nibName: "TickerPreviewCell", bundle: nil)
