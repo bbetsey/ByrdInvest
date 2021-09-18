@@ -9,7 +9,7 @@ import UIKit
 
 private let listsCellID = "ListsCollectionViewCell"
 private let tickerCellID = "TickerPreviewCell"
-
+private let headerCellID = "HeaderCell"
 
 class MainTableViewController: UITableViewController {
 
@@ -22,7 +22,7 @@ class MainTableViewController: UITableViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		navigationController?.title = "Main"
+		title = "Main"
 
 		// CollectionView Setup
 		listsCollectionView.delegate = self
@@ -33,6 +33,7 @@ class MainTableViewController: UITableViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.register(UINib(nibName: tickerCellID, bundle: nil), forCellReuseIdentifier: tickerCellID)
+		tableView.register(UINib(nibName: headerCellID, bundle: nil), forCellReuseIdentifier: headerCellID)
 		tableView.rowHeight = UITableView.automaticDimension
     }
 
@@ -44,17 +45,24 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		tickers.count
+		tickers.count + 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.row == 0 {
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell else { return UITableViewCell() }
+			cell.setup(title: "Popular")
+			return cell
+		}
+		
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }
 
-		cell.setup(ticker: tickers[indexPath.row])
+		cell.setup(ticker: tickers[indexPath.row - 1])
 
 		return cell
     }
+	
     
 
     /*
@@ -139,7 +147,7 @@ extension MainTableViewController: UICollectionViewDelegateFlowLayout {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-		UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+		UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -147,6 +155,6 @@ extension MainTableViewController: UICollectionViewDelegateFlowLayout {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		8
+		16
 	}
 }

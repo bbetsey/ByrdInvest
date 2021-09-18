@@ -16,13 +16,6 @@ class TickerPreviewCell: UITableViewCell {
 	@IBOutlet var changeLabel: UILabel!
 	@IBOutlet var logo: UIImageView!
 	
-	
-	override func awakeFromNib() {
-        super.awakeFromNib()
-        
-		logo.layer.cornerRadius = 10
-    }
-	
 	private func getColor(changePrice: Double) -> UIColor {
 		return changePrice < 0
 			? UIColor.systemRed
@@ -30,12 +23,16 @@ class TickerPreviewCell: UITableViewCell {
 	}
 	
 	func setup(ticker: ListElem) {
+		
 		nameLabel.text = ticker.companyName
 		tickerLabel.text = ticker.symbol
-		priceLabel.text = "\(ticker.previousClose)"
-		changeLabel.text = "\(ticker.priceChange)"
+		
+		priceLabel.text = "$\(ticker.previousClose)"
+		changeLabel.text = "%\(ticker.priceChange)"
 		changeLabel.textColor = getColor(changePrice: ticker.priceChange)
+		
 		logo.image = UIImage(named: ticker.symbol)
+		logo.layer.cornerRadius = 10
 		
 	}
 
