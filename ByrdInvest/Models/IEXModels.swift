@@ -8,6 +8,54 @@
 import Foundation
 
 
+private let baseUrl = "https://cloud.iexapis.com/stable"
+private let token = "token=pk_fb749936d92541fa8d916d36db253dc0"
+
+struct Company: Decodable {
+	let symbol: String
+	let companyName: String
+	let exchange: String
+	let industry: String
+	let website: String
+	let description: String
+	let CEO: String
+	let sector: String
+	let employees: Int
+	let city: String
+	let country: String
+	
+	static func getStartFavouriteCompanies() -> [String] {
+		["AAPL", "NFLX", "TSLA"]
+	}
+}
+
+enum IEXRequest {
+	case company
+	case logo
+	case stats
+	case peerGroup
+	case quote
+	case list
+	
+	func getUrlRequest(data: String) -> String {
+		switch self {
+			case .company:
+				return baseUrl + "/stock/\(data)/company?" + token
+			case .logo:
+				return baseUrl + "/stock/\(data)/logo?" + token
+			case .stats:
+				return baseUrl + "/stock/\(data)/stats?" + token
+			case .peerGroup:
+				return baseUrl + "/stock/\(data)/peers?" + token
+			case .quote:
+				return baseUrl + "/stock/\(data)/quote?" + token
+			case .list:
+				return baseUrl + "/stock/market/list/\(data)?" + token
+		}
+	}
+}
+
+
 struct ListElem: Decodable {
 	
 	let companyName: String

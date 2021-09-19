@@ -28,7 +28,7 @@ class TickerPreviewCell: UITableViewCell {
 		tickerLabel.text = ticker.symbol
 		
 		priceLabel.text = "$\(ticker.previousClose)"
-		changeLabel.text = "%\(ticker.priceChange)"
+		changeLabel.text = "\(abs(ticker.priceChange))%"
 		changeLabel.textColor = getColor(changePrice: ticker.priceChange)
 		
 		logo.image = UIImage(named: ticker.symbol)

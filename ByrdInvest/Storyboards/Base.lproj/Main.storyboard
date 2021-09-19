@@ -3,6 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,6 +37,9 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </collectionViewCellContentView>
                                     <size key="customSize" width="200" height="135"/>
+                                    <connections>
+                                        <segue destination="tTZ-aD-MLH" kind="show" identifier="ListTableViewController" id="0e0-Tf-jny"/>
+                                    </connections>
                                 </collectionViewCell>
                             </cells>
                         </collectionView>
@@ -47,6 +51,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ud2-PO-egx" kind="show" identifier="TickerViewController" id="Xxm-Ox-7xe"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -63,7 +70,71 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHS-JW-RJe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1955.072463768116" y="924.77678571428567"/>
+            <point key="canvasLocation" x="1919" y="925"/>
+        </scene>
+        <!--Ticker View Controller-->
+        <scene sceneID="ldJ-wE-drp">
+            <objects>
+                <viewController storyboardIdentifier="TickerViewController" id="ud2-PO-egx" customClass="TickerViewController" customModule="ByrdInvest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1pD-zw-JJz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hof-g9-vgb">
+                                <rect key="frame" x="16" y="172" width="382" height="32.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HNO-lX-Www"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hof-g9-vgb" firstAttribute="top" secondItem="HNO-lX-Www" secondAttribute="top" constant="32" id="NNK-0B-NTk"/>
+                            <constraint firstItem="HNO-lX-Www" firstAttribute="trailing" secondItem="hof-g9-vgb" secondAttribute="trailing" constant="16" id="YUD-rZ-lwx"/>
+                            <constraint firstItem="hof-g9-vgb" firstAttribute="leading" secondItem="HNO-lX-Www" secondAttribute="leading" constant="16" id="zcc-Vg-YJe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cSP-Qm-F5Q"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="hof-g9-vgb" id="8eS-Xg-hAW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UZR-vF-smR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="1261"/>
+        </scene>
+        <!--List Table View Controller-->
+        <scene sceneID="AY0-8B-Mhr">
+            <objects>
+                <tableViewController storyboardIdentifier="ListTableViewController" id="tTZ-aD-MLH" customClass="ListTableViewController" customModule="ByrdInvest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pRF-JP-67j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TIckerPreviewCell" id="4xD-g3-tVC">
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4xD-g3-tVC" id="RaJ-9K-kZD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ud2-PO-egx" kind="show" identifier="TickerViewController" id="PJv-cE-GJP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tTZ-aD-MLH" id="RY8-rG-RyV"/>
+                            <outlet property="delegate" destination="tTZ-aD-MLH" id="1pA-ZJ-hsZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ZrY-cJ-Qiv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-Il-mYU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="602"/>
         </scene>
         <!--Item-->
         <scene sceneID="NDm-tT-K54">
@@ -91,6 +162,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Main" id="wSP-lm-nJm"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nJH-21-ccv">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -103,6 +175,9 @@
             <point key="canvasLocation" x="1044.9275362318842" y="924.77678571428567"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PJv-cE-GJP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

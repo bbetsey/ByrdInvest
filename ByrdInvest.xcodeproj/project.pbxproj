@@ -10,6 +10,9 @@
 		3A46195026F4E405000ABA67 /* ListsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46194E26F4E405000ABA67 /* ListsCollectionViewCell.swift */; };
 		3A46195126F4E405000ABA67 /* ListsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A46194F26F4E405000ABA67 /* ListsCollectionViewCell.xib */; };
 		3A46195426F4E6CC000ABA67 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46195326F4E6CC000ABA67 /* MainTableViewController.swift */; };
+		3A85F01726F6919D00FA29F7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01626F6919D00FA29F7 /* UserModel.swift */; };
+		3A85F01A26F69C8600FA29F7 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01926F69C8600FA29F7 /* ListTableViewController.swift */; };
+		3A85F01E26F6A67E00FA29F7 /* TickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01D26F6A67E00FA29F7 /* TickerViewController.swift */; };
 		3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893A26E818130032C58C /* AppDelegate.swift */; };
 		3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893C26E818130032C58C /* SceneDelegate.swift */; };
 		3AC5894226E818130032C58C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894026E818130032C58C /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 		3A46194E26F4E405000ABA67 /* ListsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A46194F26F4E405000ABA67 /* ListsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListsCollectionViewCell.xib; sourceTree = "<group>"; };
 		3A46195326F4E6CC000ABA67 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		3A85F01626F6919D00FA29F7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		3A85F01926F69C8600FA29F7 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		3A85F01D26F6A67E00FA29F7 /* TickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerViewController.swift; sourceTree = "<group>"; };
 		3AC5893726E818130032C58C /* ByrdInvest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ByrdInvest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC5893A26E818130032C58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC5893C26E818130032C58C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +125,22 @@
 				3A46194D26F4E3D1000ABA67 /* Lists Collection */,
 			);
 			path = "Main Table";
+			sourceTree = "<group>";
+		};
+		3A85F01826F69C5700FA29F7 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				3A85F01926F69C8600FA29F7 /* ListTableViewController.swift */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		3A85F01C26F6A66000FA29F7 /* TickerPage */ = {
+			isa = PBXGroup;
+			children = (
+				3A85F01D26F6A67E00FA29F7 /* TickerViewController.swift */,
+			);
+			path = TickerPage;
 			sourceTree = "<group>";
 		};
 		3AC5892E26E818130032C58C = {
@@ -195,6 +217,8 @@
 		3AC5896F26E818F40032C58C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A85F01C26F6A66000FA29F7 /* TickerPage */,
+				3A85F01826F69C5700FA29F7 /* Lists */,
 				3A76843C26F3B20B00FA21B2 /* Main Table */,
 			);
 			path = Controllers;
@@ -204,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				3AC5897226E81C390032C58C /* IEXModels.swift */,
+				3A85F01626F6919D00FA29F7 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,6 +393,9 @@
 				3AC5894526E818130032C58C /* ByrdInvest.xcdatamodeld in Sources */,
 				3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */,
 				3AC5897E26E8BD850032C58C /* TickerPreviewCell.swift in Sources */,
+				3A85F01A26F69C8600FA29F7 /* ListTableViewController.swift in Sources */,
+				3A85F01726F6919D00FA29F7 /* UserModel.swift in Sources */,
+				3A85F01E26F6A67E00FA29F7 /* TickerViewController.swift in Sources */,
 				3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
