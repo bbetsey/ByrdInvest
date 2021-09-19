@@ -39,6 +39,8 @@ class MainTableViewController: UITableViewController {
     }
 
 
+	//MARK: - Table View Data Source
+	
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,21 +49,29 @@ class MainTableViewController: UITableViewController {
 		tickers.count + 1
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell else { return UITableViewCell() }
 			cell.setup(title: "Popular")
 			return cell
 		}
-		
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }
 		cell.setup(ticker: tickers[indexPath.row - 1])
 		return cell
     }
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	
+	
+	//MARK: - Table View Delegate
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard indexPath.row > 0 else { return }
+		performSegue(withIdentifier: "TickerViewController", sender: indexPath.row - 1)
+	}
+    
+	
+	//MARK: - Navigate
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let tickerVC = segue.destination as? TickerViewController {
 			guard let index = sender as? Int else { return }
 			tickerVC.ticker = tickers[index]
@@ -69,16 +79,9 @@ class MainTableViewController: UITableViewController {
 			guard let index = sender as? Int else { return }
 			listVC.listType = lists[index].name
 		}
-    }
-	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard indexPath.row > 0 else { return }
-		performSegue(withIdentifier: "TickerViewController", sender: indexPath.row - 1)
 	}
-    
 
 }
-
 
 
 //MARK: - CollectionView Delegate
