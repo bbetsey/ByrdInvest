@@ -20,11 +20,22 @@ class MainTableViewController: UITableViewController {
 	let tickers = ListElem.getList()
 	var selectId: Int = 0
 	
+	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
+	var quotes = [Quote]()
+	var user = User.getUser() {
+		didSet {
+			guard let requestResult = getQuotes() else { return }
+			quotes = requestResult
+		}
+	}
+	let favouriteTickers: [Quote]!
+	
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		title = "Main"
-
+		
 		// CollectionView Setup
 		listsCollectionView.delegate = self
 		listsCollectionView.dataSource = self
@@ -37,6 +48,25 @@ class MainTableViewController: UITableViewController {
 		tableView.register(UINib(nibName: headerCellID, bundle: nil), forCellReuseIdentifier: headerCellID)
 		tableView.rowHeight = UITableView.automaticDimension
     }
+	
+	
+	//MARK: - Class Methods
+	
+	private func getQuotes() -> [Quote]? {
+		var quotes = [Quote]()
+		guard let tickers = user.favouriteTickers else { return nil }
+		for ticker in tickers {
+			iexManager.fetchQuote(ticker: ticker) { (result) in
+				switch result {
+					case .Success(let quote):
+						quotes.append(quote)
+					case .Failure(let error):
+						print(error)
+				}
+			}
+		}
+		return quotes
+	}
 
 
 	//MARK: - Table View Data Source
@@ -52,7 +82,7 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell else { return UITableViewCell() }
-			cell.setup(title: "Popular")
+			cell.setup(title: "Favourite")
 			return cell
 		}
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }

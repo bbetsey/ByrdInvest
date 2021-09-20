@@ -7,8 +7,16 @@
 
 import Foundation
 
+
+//MARK: - Enum DataType
+
 enum DataType: FinalURLPoint {
 	case Company(apiKey: String, ticker: String)
+	case Quote(apiKey: String, ticker: String)
+	case List(apiKey: String, type: String)
+	case Stats(apiKey: String, ticker: String)
+	case Logo(apiKey: String, ticker: String)
+	case PeerGroup(apiKey: String, ticker: String)
 	
 	var baseUrl: URL {
 		return URL(string: "https://cloud.iexapis.com/stable")!
@@ -18,6 +26,16 @@ enum DataType: FinalURLPoint {
 		switch self {
 			case .Company(apiKey: let apiKey, ticker: let ticker):
 				return "/stock/\(ticker)/company?" + apiKey
+			case .Quote(apiKey: let apiKey, ticker: let ticker):
+				return "/stock/\(ticker)/quote?" + apiKey
+			case .List(apiKey: let apiKey, type: let type):
+				return "/stock/market/list/\(type)?" + apiKey
+			case .Stats(apiKey: let apiKey, ticker: let ticker):
+				return "/stock/\(ticker)/stats?" + apiKey
+			case .Logo(apiKey: let apiKey, ticker: let ticker):
+				return "/stock/\(ticker)/logo?" + apiKey
+			case .PeerGroup(apiKey: let apiKey, ticker: let ticker):
+				return "/stock/\(ticker)/peers?" + apiKey
 		}
 	}
 	
@@ -25,11 +43,10 @@ enum DataType: FinalURLPoint {
 		let url = URL(string: path, relativeTo: baseUrl)
 		return URLRequest(url: url!)
 	}
-	
-	
-	
-	
 }
+
+
+//MARK: - Class IEXAPIManager
 
 final class IEXAPIManager: APIManager {
 	let sessionConfiguration: URLSessionConfiguration
@@ -58,4 +75,17 @@ final class IEXAPIManager: APIManager {
 			return company
 		}, completionHandler: completionHandler)
 	}
+	
+	func fetchQuote(ticker: String, completionHandler: @escaping (APIResult<Quote>) -> Void) {
+		let request = DataType.Quote(apiKey: self.apiKey, ticker: ticker).request
+		
+		fetch(request: request, parse: { (data) -> Quote? in
+			guard let quote = try? JSONDecoder().decode(Quote.self, from: data) else {
+				print("Error: can't parse Quote")
+				return nil
+			}
+			return quote
+		}, completionHandler: completionHandler)
+	}
+	
 }

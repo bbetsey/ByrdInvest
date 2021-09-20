@@ -13,14 +13,16 @@ struct User {
 	let name: String
 	let login: String
 	let pass: String
-	let favourites: [Company]?
+	let favouriteTickers: [String]?
+	let favouriteCompanies: [Company]?
 	
-	static func getPerson() -> User {
+	static func getUser() -> User {
 		User(
 			name: "Anton",
 			login: "bbetsey",
 			pass: "qwerty",
-			favourites: nil
+			favouriteTickers: ["AAPL", "NFLX", "TSLA"],
+			favouriteCompanies: nil
 		)
 	}
 }

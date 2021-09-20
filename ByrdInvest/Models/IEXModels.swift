@@ -23,36 +23,14 @@ struct Company: Decodable {
 	let employees: Int
 	let city: String
 	let country: String
-	
-	static func getStartFavouriteCompanies() -> [String] {
-		["AAPL", "NFLX", "TSLA"]
-	}
 }
 
-enum IEXRequest {
-	case company
-	case logo
-	case stats
-	case peerGroup
-	case quote
-	case list
-	
-	func getUrlRequest(data: String) -> String {
-		switch self {
-			case .company:
-				return baseUrl + "/stock/\(data)/company?" + token
-			case .logo:
-				return baseUrl + "/stock/\(data)/logo?" + token
-			case .stats:
-				return baseUrl + "/stock/\(data)/stats?" + token
-			case .peerGroup:
-				return baseUrl + "/stock/\(data)/peers?" + token
-			case .quote:
-				return baseUrl + "/stock/\(data)/quote?" + token
-			case .list:
-				return baseUrl + "/stock/market/list/\(data)?" + token
-		}
-	}
+struct Quote: Decodable {
+	let symbol: String
+	let companyName: String
+	let latestPrice: Double?
+	let open: Double?
+	let change: Double?
 }
 
 
