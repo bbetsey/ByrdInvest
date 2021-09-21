@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 private let baseUrl = "https://cloud.iexapis.com/stable"
@@ -31,6 +32,48 @@ struct Quote: Decodable {
 	let latestPrice: Double?
 	let open: Double?
 	let change: Double?
+	
+	var latestPriceString: String {
+		"$\(round((latestPrice ?? 0) * 10) / 10)"
+	}
+	var changeString: String {
+		"\(abs(round((change ?? 0) * 10) / 10))%"
+	}
+	var changeColor: UIColor {
+		return (change ?? 0) < 0
+			? UIColor.systemRed
+			: UIColor.systemGreen
+	}
+}
+
+struct List: Decodable {
+	let symbol: String
+}
+
+struct Stats: Decodable {
+	let companyName: String
+	let marketCap: Double?
+	let week52high: Double
+	let week52low: Double
+	let week52change: Double
+	let employees: Double
+	let ttmEPS: Double
+	let ttmDividendRate: Double
+	let dividendYield: Double
+	let nextDividendDate: String?
+	let exDividendDate: String?
+	let nextEarningsDate: String?
+	let peRatio: Double?
+	let beta: Double?
+	let year5ChangePercent: Double?
+	let year2ChangePercent: Double?
+	let year1ChangePercent: Double?
+	let ytdChangePercent: Double?
+	let month6ChangePercent: Double?
+	let month3ChangePercent: Double?
+	let month1ChangePercent: Double?
+	let day30ChangePercent: Double?
+	let day5ChangePercent: Double?
 }
 
 

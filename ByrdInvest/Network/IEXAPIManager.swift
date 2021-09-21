@@ -17,28 +17,28 @@ enum DataType: FinalURLPoint {
 	case Stats(apiKey: String, ticker: String)
 	case Logo(apiKey: String, ticker: String)
 	case PeerGroup(apiKey: String, ticker: String)
-	
+
 	var baseUrl: URL {
-		return URL(string: "https://cloud.iexapis.com/stable")!
+		return URL(string: "https://cloud.iexapis.com/stable/")!
 	}
-	
+
 	var path: String {
 		switch self {
 			case .Company(apiKey: let apiKey, ticker: let ticker):
-				return "/stock/\(ticker)/company?" + apiKey
+				return "stock/\(ticker)/company?" + apiKey
 			case .Quote(apiKey: let apiKey, ticker: let ticker):
-				return "/stock/\(ticker)/quote?" + apiKey
+				return "stock/\(ticker)/quote?" + apiKey
 			case .List(apiKey: let apiKey, type: let type):
-				return "/stock/market/list/\(type)?" + apiKey
+				return "stock/market/list/\(type)?" + apiKey
 			case .Stats(apiKey: let apiKey, ticker: let ticker):
-				return "/stock/\(ticker)/stats?" + apiKey
+				return "stock/\(ticker)/stats?" + apiKey
 			case .Logo(apiKey: let apiKey, ticker: let ticker):
-				return "/stock/\(ticker)/logo?" + apiKey
+				return "stock/\(ticker)/logo?" + apiKey
 			case .PeerGroup(apiKey: let apiKey, ticker: let ticker):
-				return "/stock/\(ticker)/peers?" + apiKey
+				return "stock/\(ticker)/peers?" + apiKey
 		}
 	}
-	
+
 	var request: URLRequest {
 		let url = URL(string: path, relativeTo: baseUrl)
 		return URLRequest(url: url!)
@@ -54,16 +54,16 @@ final class IEXAPIManager: APIManager {
 		return URLSession(configuration: sessionConfiguration)
 	} ()
 	let apiKey: String
-	
+
 	init(sessionConfiguration: URLSessionConfiguration, apiKey: String){
 		self.sessionConfiguration = sessionConfiguration
 		self.apiKey = apiKey
 	}
-	
+
 	convenience init(apiKey: String) {
 		self.init(sessionConfiguration: URLSessionConfiguration.default, apiKey: apiKey)
 	}
-	
+
 	func fetchCompany(ticker: String, completionHandler: @escaping (APIResult<Company>) -> Void) {
 		let request = DataType.Company(apiKey: self.apiKey, ticker: ticker).request
 		
@@ -75,7 +75,7 @@ final class IEXAPIManager: APIManager {
 			return company
 		}, completionHandler: completionHandler)
 	}
-	
+
 	func fetchQuote(ticker: String, completionHandler: @escaping (APIResult<Quote>) -> Void) {
 		let request = DataType.Quote(apiKey: self.apiKey, ticker: ticker).request
 		
@@ -85,6 +85,30 @@ final class IEXAPIManager: APIManager {
 				return nil
 			}
 			return quote
+		}, completionHandler: completionHandler)
+	}
+
+	func fetchList(type: String, completionHandler: @escaping (APIResult<[List]>) -> Void) {
+		let request = DataType.List(apiKey: self.apiKey, type: type).request
+		
+		fetch(request: request, parse: { (data) -> [List]? in
+			guard let list = try? JSONDecoder().decode([List].self, from: data) else {
+				print("Error: can't parse List")
+				return nil
+			}
+			return list
+		}, completionHandler: completionHandler)
+	}
+	
+	func fetchStats(ticker: String, completionHandler: @escaping (APIResult<Stats>) -> Void) {
+		let request = DataType.Stats(apiKey: self.apiKey, ticker: ticker).request
+		
+		fetch(request: request, parse: { (data) -> Stats? in
+			guard let stats = try? JSONDecoder().decode(Stats.self, from: data) else {
+				print("Error: can't parse Stats")
+				return nil
+			}
+			return stats
 		}, completionHandler: completionHandler)
 	}
 	

@@ -11,7 +11,7 @@ class TickerViewController: UIViewController {
 
 	@IBOutlet var nameLabel: UILabel!
 	
-	var ticker: ListElem!
+	var ticker: Quote!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()

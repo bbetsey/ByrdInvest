@@ -22,16 +22,20 @@ class TickerPreviewCell: UITableViewCell {
 			: UIColor.systemGreen
 	}
 	
-	func setup(ticker: ListElem) {
+	func setup(ticker: Quote) {
 		
 		nameLabel.text = ticker.companyName
 		tickerLabel.text = ticker.symbol
 		
-		priceLabel.text = "$\(ticker.previousClose)"
-		changeLabel.text = "\(abs(ticker.priceChange))%"
-		changeLabel.textColor = getColor(changePrice: ticker.priceChange)
+		priceLabel.text = ticker.latestPriceString
+		changeLabel.text = ticker.changeString
+		changeLabel.textColor = ticker.changeColor
 		
-		logo.image = UIImage(named: ticker.symbol)
+		if let image = UIImage(named: ticker.symbol) {
+			logo.image = image
+		} else {
+			logo.image = UIImage(named: "MOON")
+		}
 		logo.layer.cornerRadius = 10
 		
 	}

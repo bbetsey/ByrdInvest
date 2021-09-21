@@ -18,23 +18,23 @@ class MainTableViewController: UITableViewController {
 
 	let lists = ListPreview.getListsPreview()
 	let tickers = ListElem.getList()
-	var selectId: Int = 0
 	
 	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
-	var quotes = [Quote]()
-	var user = User.getUser() {
+	var quotes = [Quote]() {
 		didSet {
-			guard let requestResult = getQuotes() else { return }
-			quotes = requestResult
+			tableView.reloadData()
 		}
 	}
-	let favouriteTickers: [Quote]!
+	var user = User.getUser()
+	var favouriteTickers: [Quote]!
 	
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		title = "Main"
+		
+		getQuotes()
 		
 		// CollectionView Setup
 		listsCollectionView.delegate = self
@@ -52,20 +52,19 @@ class MainTableViewController: UITableViewController {
 	
 	//MARK: - Class Methods
 	
-	private func getQuotes() -> [Quote]? {
-		var quotes = [Quote]()
-		guard let tickers = user.favouriteTickers else { return nil }
+	private func getQuotes() {
+		guard let tickers = user.favouriteTickers else { return }
 		for ticker in tickers {
 			iexManager.fetchQuote(ticker: ticker) { (result) in
 				switch result {
 					case .Success(let quote):
-						quotes.append(quote)
+						self.quotes.append(quote)
 					case .Failure(let error):
 						print(error)
 				}
 			}
 		}
-		return quotes
+
 	}
 
 
@@ -76,7 +75,7 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		tickers.count + 1
+		quotes.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,8 +84,9 @@ class MainTableViewController: UITableViewController {
 			cell.setup(title: "Favourite")
 			return cell
 		}
+		print("\(quotes[0].companyName)")
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }
-		cell.setup(ticker: tickers[indexPath.row - 1])
+		cell.setup(ticker: quotes[indexPath.row - 1])
 		return cell
     }
 	
@@ -104,10 +104,10 @@ class MainTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let tickerVC = segue.destination as? TickerViewController {
 			guard let index = sender as? Int else { return }
-			tickerVC.ticker = tickers[index]
+			tickerVC.ticker = quotes[index]
 		} else if let listVC = segue.destination as? ListTableViewController {
 			guard let index = sender as? Int else { return }
-			listVC.listType = lists[index].name
+			listVC.listType = lists[index].name.lowercased()
 		}
 	}
 

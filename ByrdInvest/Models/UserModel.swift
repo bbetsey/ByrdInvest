@@ -21,7 +21,7 @@ struct User {
 			name: "Anton",
 			login: "bbetsey",
 			pass: "qwerty",
-			favouriteTickers: ["AAPL", "NFLX", "TSLA"],
+			favouriteTickers: ["AAPL", "MSFT", "TSLA"],
 			favouriteCompanies: nil
 		)
 	}
