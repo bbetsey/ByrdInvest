@@ -15,18 +15,12 @@ class TickerPreviewCell: UITableViewCell {
 	@IBOutlet var priceLabel: UILabel!
 	@IBOutlet var changeLabel: UILabel!
 	@IBOutlet var logo: UIImageView!
-	
-	private func getColor(changePrice: Double) -> UIColor {
-		return changePrice < 0
-			? UIColor.systemRed
-			: UIColor.systemGreen
-	}
+	@IBOutlet var container: UIView!
 	
 	func setup(ticker: Quote) {
 		
 		nameLabel.text = ticker.companyName
 		tickerLabel.text = ticker.symbol
-		
 		priceLabel.text = ticker.latestPriceString
 		changeLabel.text = ticker.changeString
 		changeLabel.textColor = ticker.changeColor
@@ -36,14 +30,24 @@ class TickerPreviewCell: UITableViewCell {
 		} else {
 			logo.image = UIImage(named: "MOON")
 		}
-		logo.layer.cornerRadius = 10
+		setLogo()
 		
 	}
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
 }
 
+extension TickerPreviewCell {
+	func setLogo() {
+		container.layer.cornerRadius = 10
+		container.layer.masksToBounds = false
+		container.layer.shadowColor = UIColor.black.cgColor
+		container.layer.shadowOffset = .zero
+		container.layer.shadowOpacity = 0.15
+		container.layer.shadowRadius = 5.0
+		logo.frame = container.bounds
+		logo.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		logo.layer.cornerRadius = 10
+		container.addSubview(logo)
+	}
+}
 
