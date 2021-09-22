@@ -17,7 +17,6 @@ class MainTableViewController: UITableViewController {
 	@IBOutlet var listsCollectionLayout: UICollectionViewFlowLayout!
 
 	let lists = ListPreview.getListsPreview()
-	let tickers = ListElem.getList()
 	
 	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
 	var quotes = [Quote]() {
@@ -60,7 +59,8 @@ class MainTableViewController: UITableViewController {
 					case .Success(let quote):
 						self.quotes.append(quote)
 					case .Failure(let error):
-						print(error)
+						let alertController = self.iexManager.alertController(title: "Unable to get data", message: "\(error.localizedDescription)")
+						self.present(alertController, animated: true, completion: nil)
 				}
 			}
 		}

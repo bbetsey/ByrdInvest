@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 typealias JSONTask = URLSessionDataTask
@@ -74,6 +75,13 @@ extension APIManager {
 			}
 		}
 		dataTask.resume()
+	}
+	
+	func alertController(title: String, message: String) -> UIAlertController {
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alertController.addAction(okAction)
+		return alertController
 	}
 	
 }
