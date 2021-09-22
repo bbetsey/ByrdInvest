@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 
-private let baseUrl = "https://cloud.iexapis.com/stable"
-private let token = "token=pk_fb749936d92541fa8d916d36db253dc0"
+//MARK: - Company Model
 
 struct Company: Decodable {
 	let symbol: String
@@ -25,6 +24,9 @@ struct Company: Decodable {
 	let city: String
 	let country: String
 }
+
+
+//MARK: - Quote Model
 
 struct Quote: Decodable {
 	let symbol: String
@@ -46,9 +48,15 @@ struct Quote: Decodable {
 	}
 }
 
+
+//MARK: - List Model
+
 struct List: Decodable {
 	let symbol: String
 }
+
+
+//MARK: - Stats Model
 
 struct Stats: Decodable {
 	let companyName: String
@@ -77,31 +85,14 @@ struct Stats: Decodable {
 }
 
 
-struct ListElem: Decodable {
-	
-	let companyName: String
-	let symbol: String
-	let latestPrice: Double
-	let previousClose: Double
-	
-	var priceChange: Double {
-		Double(round((latestPrice - previousClose) / (previousClose / 100) * 100) / 100)
-	}
-	
-	static func getList() -> [ListElem] {
-		[
-			ListElem(companyName: "Apple", symbol: "AAPL", latestPrice: 153.3, previousClose: 154.1),
-			ListElem(companyName: "Google", symbol: "GOOG", latestPrice: 2345.5, previousClose: 2360.1),
-			ListElem(companyName: "Tesla", symbol: "TSLA", latestPrice: 632.56, previousClose: 665.7),
-			ListElem(companyName: "Microsoft", symbol: "MSFT", latestPrice: 602.16, previousClose: 600.5)
-		]
-	}
-	
-}
+//MARK: - Logo Model
 
 struct Logo: Decodable {
 	let url: String
 }
+
+
+//MARK: - List Preview Model
 
 struct ListPreview {
 	
