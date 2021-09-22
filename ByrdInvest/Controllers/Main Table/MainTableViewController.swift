@@ -56,10 +56,10 @@ class MainTableViewController: UITableViewController {
 		for ticker in tickers {
 			iexManager.fetchQuote(ticker: ticker) { (result) in
 				switch result {
-					case .Success(let quote):
+					case .success(let quote):
 						self.quotes.append(quote)
-					case .Failure(let error):
-						let alertController = self.iexManager.alertController(title: "Unable to get data", message: "\(error.localizedDescription)")
+					case .failure(let error):
+						let alertController = self.iexManager.alertController(title: "Unable to get data", message: "\(error.localizedDescription)", error: error)
 						self.present(alertController, animated: true, completion: nil)
 				}
 			}

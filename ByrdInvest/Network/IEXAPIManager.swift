@@ -8,7 +8,7 @@
 import Foundation
 
 
-//MARK: - Enum DataType
+//MARK: - Enum IEX DataType
 
 enum DataType: FinalURLPoint {
 	case Company(apiKey: String, ticker: String)
@@ -49,12 +49,19 @@ enum DataType: FinalURLPoint {
 //MARK: - Class IEXAPIManager
 
 final class IEXAPIManager: APIManager {
+	
+	
+	//Properties
+	
 	let sessionConfiguration: URLSessionConfiguration
 	lazy var session: URLSession = {
 		return URLSession(configuration: sessionConfiguration)
-	} ()
+	}()
 	let apiKey: String
 
+	
+	//Initialization
+	
 	init(sessionConfiguration: URLSessionConfiguration, apiKey: String){
 		self.sessionConfiguration = sessionConfiguration
 		self.apiKey = apiKey
@@ -64,7 +71,10 @@ final class IEXAPIManager: APIManager {
 		self.init(sessionConfiguration: URLSessionConfiguration.default, apiKey: apiKey)
 	}
 
-	func fetchCompany(ticker: String, completionHandler: @escaping (APIResult<Company>) -> Void) {
+	
+	//Methods
+	
+	func fetchCompany(ticker: String, completionHandler: @escaping (Result<Company, Error>) -> Void) {
 		let request = DataType.Company(apiKey: self.apiKey, ticker: ticker).request
 		
 		fetch(request: request, parse: { (data) -> Company? in
@@ -76,7 +86,7 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 
-	func fetchQuote(ticker: String, completionHandler: @escaping (APIResult<Quote>) -> Void) {
+	func fetchQuote(ticker: String, completionHandler: @escaping (Result<Quote, Error>) -> Void) {
 		let request = DataType.Quote(apiKey: self.apiKey, ticker: ticker).request
 		
 		fetch(request: request, parse: { (data) -> Quote? in
@@ -88,7 +98,7 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 
-	func fetchList(type: String, completionHandler: @escaping (APIResult<[List]>) -> Void) {
+	func fetchList(type: String, completionHandler: @escaping (Result<[List], Error>) -> Void) {
 		let request = DataType.List(apiKey: self.apiKey, type: type).request
 		
 		fetch(request: request, parse: { (data) -> [List]? in
@@ -100,7 +110,7 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 	
-	func fetchStats(ticker: String, completionHandler: @escaping (APIResult<Stats>) -> Void) {
+	func fetchStats(ticker: String, completionHandler: @escaping (Result<Stats, Error>) -> Void) {
 		let request = DataType.Stats(apiKey: self.apiKey, ticker: ticker).request
 		
 		fetch(request: request, parse: { (data) -> Stats? in

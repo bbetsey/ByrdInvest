@@ -37,10 +37,10 @@ class ListTableViewController: UITableViewController {
 	private func getTickers() {
 		iexManager.fetchList(type: listType) { result in
 			switch result {
-				case .Success(let list):
+				case .success(let list):
 					self.tickers = list
 					self.tableView.reloadData()
-				case .Failure(let error):
+				case .failure(let error):
 					print(error)
 			}
 		}
@@ -50,10 +50,10 @@ class ListTableViewController: UITableViewController {
 		for ticker in tickers! {
 			iexManager.fetchQuote(ticker: ticker.symbol) { result in
 				switch result {
-					case .Success(let quote):
+					case .success(let quote):
 						self.quotes.append(quote)
 						self.tableView.reloadData()
-					case .Failure(let error):
+					case .failure(let error):
 						print(error)
 				}
 			}

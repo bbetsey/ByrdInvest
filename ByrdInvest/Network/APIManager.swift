@@ -12,16 +12,17 @@ import UIKit
 typealias JSONTask = URLSessionDataTask
 typealias JSONCompletionHandler = (Data?, HTTPURLResponse?, Error?) -> Void
 
-enum APIResult<T> {
-	case Success(T)
-	case Failure(Error)
-}
+
+//MARK: - Protocol FinalURLPoint
 
 protocol FinalURLPoint {
 	var baseUrl: URL { get }
 	var path: String { get }
 	var request: URLRequest { get }
 }
+
+
+//MARK: - Protocol APIManager
 
 protocol APIManager {
 	var sessionConfiguration: URLSessionConfiguration { get }
@@ -30,6 +31,9 @@ protocol APIManager {
 	func JSONTaskWith(request: URLRequest, completionHandler: @escaping JSONCompletionHandler) -> JSONTask
 	func fetch<T>(request: URLRequest, parse: @escaping (Data) -> T?, completionHandler: @escaping (APIResult<T>) -> Void)
 }
+
+
+//MARK: - Protocol APIManager Extension
 
 extension APIManager {
 	
@@ -57,27 +61,27 @@ extension APIManager {
 		return dataTask
 	}
 	
-	func fetch<T>(request: URLRequest, parse: @escaping (Data) -> T?, completionHandler: @escaping (APIResult<T>) -> Void) {
+	func fetch<T>(request: URLRequest, parse: @escaping (Data) -> T?, completionHandler: @escaping (Result<T, Error>) -> Void) {
 		let dataTask = JSONTaskWith(request: request) { json, response, error in
 			DispatchQueue.main.async {
 				guard let json = json else {
 					if let error = error {
-						completionHandler(.Failure(error))
+						completionHandler(.failure(error))
 					}
 					return
 				}
 				if let value = parse(json) {
-					completionHandler(.Success(value))
+					completionHandler(.success(value))
 				} else {
 					let error = NSError(domain: BBNetworkingErrorDomain, code: 200, userInfo: nil)
-					completionHandler(.Failure(error))
+					completionHandler(.failure(error))
 				}
 			}
 		}
 		dataTask.resume()
 	}
 	
-	func alertController(title: String, message: String) -> UIAlertController {
+	func alertController(title: String, message: String, error: Error) -> UIAlertController {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 		alertController.addAction(okAction)
