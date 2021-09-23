@@ -10,9 +10,10 @@ import UIKit
 class HeaderCell: UITableViewCell {
 
 	@IBOutlet var titleLabel: UILabel!
+	var sectionName: String!
 	
 	func setup(title: String) {
-		titleLabel.text = title
+		titleLabel.text = sectionName
 	}
     
 }

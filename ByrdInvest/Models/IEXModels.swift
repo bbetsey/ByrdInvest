@@ -97,12 +97,13 @@ struct Logo: Decodable {
 struct ListPreview {
 	
 	let name: String
+	let requestName: String
 	
 	static func getListsPreview() -> [ListPreview] {
 		[
-			ListPreview(name: "Gainers"),
-			ListPreview(name: "Loosers"),
-			ListPreview(name: "Most Active")
+			ListPreview(name: "Gainers", requestName: "gainers"),
+			ListPreview(name: "Losers", requestName: "losers"),
+			ListPreview(name: "Most Active", requestName: "mostactive")
 		]
 	}
 	

@@ -9,7 +9,7 @@ import UIKit
 
 private let listsCellID = "ListsCollectionViewCell"
 private let tickerCellID = "TickerPreviewCell"
-private let headerCellID = "HeaderCell"
+private let headerID = "CustomHeader"
 
 class MainTableViewController: UITableViewController {
 
@@ -44,7 +44,7 @@ class MainTableViewController: UITableViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.register(UINib(nibName: tickerCellID, bundle: nil), forCellReuseIdentifier: tickerCellID)
-		tableView.register(UINib(nibName: headerCellID, bundle: nil), forCellReuseIdentifier: headerCellID)
+		tableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: headerID)
 		tableView.rowHeight = UITableView.automaticDimension
     }
 	
@@ -75,27 +75,26 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		quotes.count + 1
+		quotes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.row == 0 {
-			guard let cell = tableView.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell else { return UITableViewCell() }
-			cell.setup(title: "Favourite")
-			return cell
-		}
-		print("\(quotes[0].companyName)")
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: tickerCellID, for: indexPath) as? TickerPreviewCell else { return UITableViewCell() }
-		cell.setup(ticker: quotes[indexPath.row - 1])
+		cell.setup(ticker: quotes[indexPath.row])
 		return cell
-    }
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! CustomHeader
+		headerCell.title = "Favourite"
+		return headerCell
+	}
 	
 	
 	//MARK: - Table View Delegate
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard indexPath.row > 0 else { return }
-		performSegue(withIdentifier: "TickerViewController", sender: indexPath.row - 1)
+		performSegue(withIdentifier: "TickerViewController", sender: indexPath.row)
 	}
     
 	
@@ -107,7 +106,7 @@ class MainTableViewController: UITableViewController {
 			tickerVC.ticker = quotes[index]
 		} else if let listVC = segue.destination as? ListTableViewController {
 			guard let index = sender as? Int else { return }
-			listVC.listType = lists[index].name.lowercased()
+			listVC.listType = lists[index].requestName
 		}
 	}
 

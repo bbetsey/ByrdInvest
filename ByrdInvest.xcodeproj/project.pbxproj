@@ -13,6 +13,7 @@
 		3A85F01726F6919D00FA29F7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01626F6919D00FA29F7 /* UserModel.swift */; };
 		3A85F01A26F69C8600FA29F7 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01926F69C8600FA29F7 /* ListTableViewController.swift */; };
 		3A85F01E26F6A67E00FA29F7 /* TickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85F01D26F6A67E00FA29F7 /* TickerViewController.swift */; };
+		3A99700E26FBFBBD00FA71D1 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99700D26FBFBBD00FA71D1 /* CustomHeader.swift */; };
 		3AC5893B26E818130032C58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893A26E818130032C58C /* AppDelegate.swift */; };
 		3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5893C26E818130032C58C /* SceneDelegate.swift */; };
 		3AC5894226E818130032C58C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5894026E818130032C58C /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		3A85F01626F6919D00FA29F7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3A85F01926F69C8600FA29F7 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		3A85F01D26F6A67E00FA29F7 /* TickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerViewController.swift; sourceTree = "<group>"; };
+		3A99700D26FBFBBD00FA71D1 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		3AC5893726E818130032C58C /* ByrdInvest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ByrdInvest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC5893A26E818130032C58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC5893C26E818130032C58C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				3AC5897D26E8BD850032C58C /* TickerPreviewCell.xib */,
 				3ACD94CF26F5599C00786132 /* HeaderCell.swift */,
 				3ACD94D026F5599C00786132 /* HeaderCell.xib */,
+				3A99700D26FBFBBD00FA71D1 /* CustomHeader.swift */,
 			);
 			path = "Ticker Preview";
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				3AF8E21526F8B9EB00428974 /* APIManager.swift in Sources */,
 				3A85F01E26F6A67E00FA29F7 /* TickerViewController.swift in Sources */,
 				3AC5893D26E818130032C58C /* SceneDelegate.swift in Sources */,
+				3A99700E26FBFBBD00FA71D1 /* CustomHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

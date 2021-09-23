@@ -74,6 +74,7 @@ final class IEXAPIManager: APIManager {
 	
 	//Methods
 	
+	//Company: name, city, country, sector, employees
 	func fetchCompany(ticker: String, completionHandler: @escaping (Result<Company, Error>) -> Void) {
 		let request = DataType.Company(apiKey: self.apiKey, ticker: ticker).request
 		
@@ -86,6 +87,7 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 
+	//Quote: latest price, open price, close price
 	func fetchQuote(ticker: String, completionHandler: @escaping (Result<Quote, Error>) -> Void) {
 		let request = DataType.Quote(apiKey: self.apiKey, ticker: ticker).request
 		
@@ -98,6 +100,8 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 
+	
+	//List: gainers, loosers, most active
 	func fetchList(type: String, completionHandler: @escaping (Result<[List], Error>) -> Void) {
 		let request = DataType.List(apiKey: self.apiKey, type: type).request
 		
@@ -110,6 +114,7 @@ final class IEXAPIManager: APIManager {
 		}, completionHandler: completionHandler)
 	}
 	
+	//Stats: full company economic data
 	func fetchStats(ticker: String, completionHandler: @escaping (Result<Stats, Error>) -> Void) {
 		let request = DataType.Stats(apiKey: self.apiKey, ticker: ticker).request
 		
