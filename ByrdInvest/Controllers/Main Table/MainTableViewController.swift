@@ -18,21 +18,16 @@ class MainTableViewController: UITableViewController {
 
 	let lists = ListPreview.getListsPreview()
 	
-	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
-	var quotes = [Quote]() {
-		didSet {
-			tableView.reloadData()
-		}
-	}
+	var quotes = [Quote]()
 	var user = User.getUser()
 	var favouriteTickers: [Quote]!
 	
+	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		title = "Main"
-		
 		getQuotes()
 		
 		// CollectionView Setup
@@ -58,6 +53,7 @@ class MainTableViewController: UITableViewController {
 				switch result {
 					case .success(let quote):
 						self.quotes.append(quote)
+						self.tableView.reloadData()
 					case .failure(let error):
 						let alertController = self.iexManager.alertController(title: "Unable to get data", message: "\(error.localizedDescription)", error: error)
 						self.present(alertController, animated: true, completion: nil)
@@ -83,23 +79,23 @@ class MainTableViewController: UITableViewController {
 		cell.setup(ticker: quotes[indexPath.row])
 		return cell
 	}
-	
+
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! CustomHeader
 		headerCell.title = "Favourite"
 		return headerCell
 	}
-	
-	
+
+
 	//MARK: - Table View Delegate
-	
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		performSegue(withIdentifier: "TickerViewController", sender: indexPath.row)
 	}
-    
-	
+
+
 	//MARK: - Navigate
-	
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let tickerVC = segue.destination as? TickerViewController {
 			guard let index = sender as? Int else { return }
@@ -157,5 +153,33 @@ extension MainTableViewController: UICollectionViewDelegateFlowLayout {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		16
+	}
+}
+
+
+//MARK: - Cell Methods
+
+extension MainTableViewController {
+	func getLogoURL(ticker: String, cell: TickerPreviewCell) {
+		iexManager.fetchLogoUrl(ticker: ticker) { result in
+			switch result {
+				case .success(let logoURL):
+					self.getLogo(logoURL: logoURL.url, cell: cell)
+				case .failure(let error):
+					print(error)
+			}
+		}
+	}
+	
+	func getLogo(logoURL: String, cell: TickerPreviewCell) {
+		iexManager.fetchLogo(url: logoURL) { result in
+			switch result {
+				case .success(let logo):
+					cell.logo.image = logo
+					self.tableView.reloadData()
+				case .failure(let error):
+					print(error)
+			}
+		}
 	}
 }

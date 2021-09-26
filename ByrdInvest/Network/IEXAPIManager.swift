@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 //MARK: - Enum IEX DataType
@@ -15,7 +16,8 @@ enum DataType: FinalURLPoint {
 	case Quote(apiKey: String, ticker: String)
 	case List(apiKey: String, type: String)
 	case Stats(apiKey: String, ticker: String)
-	case Logo(apiKey: String, ticker: String)
+	case LogoURL(apiKey: String, ticker: String)
+	case Logo(url: String)
 	case PeerGroup(apiKey: String, ticker: String)
 
 	var baseUrl: URL {
@@ -32,8 +34,10 @@ enum DataType: FinalURLPoint {
 				return "stock/market/list/\(type)?" + apiKey
 			case .Stats(apiKey: let apiKey, ticker: let ticker):
 				return "stock/\(ticker)/stats?" + apiKey
-			case .Logo(apiKey: let apiKey, ticker: let ticker):
+			case .LogoURL(apiKey: let apiKey, ticker: let ticker):
 				return "stock/\(ticker)/logo?" + apiKey
+			case .Logo(url: let url):
+				return url
 			case .PeerGroup(apiKey: let apiKey, ticker: let ticker):
 				return "stock/\(ticker)/peers?" + apiKey
 		}
@@ -124,6 +128,32 @@ final class IEXAPIManager: APIManager {
 				return nil
 			}
 			return stats
+		}, completionHandler: completionHandler)
+	}
+	
+	func fetchLogoUrl(ticker: String, completionHandler: @escaping (Result<Logo, Error>) -> Void) {
+		let request = DataType.LogoURL(apiKey: self.apiKey, ticker: ticker).request
+		
+		fetch(request: request, parse: { (data) -> Logo? in
+			guard let logo = try? JSONDecoder().decode(Logo.self, from: data) else {
+				print("Error: can't parse Logo")
+				return nil
+			}
+			return logo
+		}, completionHandler: completionHandler)
+	}
+	
+	func fetchLogo(url: String?, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
+		guard let urlString = url else { return }
+		guard let url = URL(string: urlString) else { return }
+		let request = URLRequest(url: url)
+		
+		fetch(request: request, parse: { (data) -> UIImage? in
+			guard let logo = UIImage(data: data) else {
+				print("Error: can't fetch logoImage")
+				return nil
+			}
+			return logo
 		}, completionHandler: completionHandler)
 	}
 	

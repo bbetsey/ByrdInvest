@@ -17,6 +17,8 @@ class TickerPreviewCell: UITableViewCell {
 	@IBOutlet var logo: UIImageView!
 	@IBOutlet var container: UIView!
 	
+	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
+	
 	func setup(ticker: Quote) {
 		
 		nameLabel.text = ticker.companyName
@@ -25,13 +27,33 @@ class TickerPreviewCell: UITableViewCell {
 		changeLabel.text = ticker.changeString
 		changeLabel.textColor = ticker.changeColor
 		
-		if let image = UIImage(named: ticker.symbol) {
-			logo.image = image
-		} else {
-			logo.image = UIImage(named: "MOON")
-		}
+		logo.image = UIImage(named: "MOON")
+		getLogoURL(ticker: ticker.symbol)
 		setLogo()
 		
+	}
+	
+	func getLogoURL(ticker: String) {
+		iexManager.fetchLogoUrl(ticker: ticker) { result in
+			switch result {
+				case .success(let logoURL):
+					self.getLogo(logoURL: logoURL.url)
+				case .failure(let error):
+					print(error)
+			}
+		}
+	}
+	
+	func getLogo(logoURL: String) {
+		iexManager.fetchLogo(url: logoURL) { result in
+			switch result {
+				case .success(let logo):
+					self.logo.image = logo
+					self.setNeedsLayout()
+				case .failure(let error):
+					print(error)
+			}
+		}
 	}
     
 }

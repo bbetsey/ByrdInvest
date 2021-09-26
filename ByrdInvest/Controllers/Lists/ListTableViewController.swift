@@ -10,23 +10,16 @@ import UIKit
 private let cellID = "TickerPreviewCell"
 
 class ListTableViewController: UITableViewController {
-	
+		
 	lazy var iexManager = IEXAPIManager(apiKey: "token=pk_fb749936d92541fa8d916d36db253dc0")
 	var quotes = [Quote]()
-	var tickers: [List]? {
-		didSet {
-			getQuotes()
-		}
-	}
-	var listType: String! {
-		didSet {
-			getTickers()
-			}
-	}
-	var list: [List]?
+	var tickers: [List]?
+	var listType: String!
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		getTickers()
 
 		title = listType.capitalized
 		tableView.delegate = self
@@ -39,7 +32,7 @@ class ListTableViewController: UITableViewController {
 			switch result {
 				case .success(let list):
 					self.tickers = list
-					self.tableView.reloadData()
+					self.getQuotes()
 				case .failure(let error):
 					print(error)
 			}
