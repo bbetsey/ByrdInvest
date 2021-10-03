@@ -10,25 +10,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ListsCollectionViewCell" id="gTV-IL-0wX" customClass="ListsCollectionViewCell" customModule="ByrdInvest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gainers" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-hu-Pu9">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="135"/>
+                        <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="PVw-Rk-1jR"/>
-                            <constraint firstAttribute="height" constant="135" id="pWX-DY-B8E"/>
+                            <constraint firstAttribute="width" constant="175" id="PVw-Rk-1jR"/>
+                            <constraint firstAttribute="height" constant="220" id="pWX-DY-B8E"/>
                         </constraints>
                     </imageView>
                     <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icg-iE-lOo">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="135"/>
+                        <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gainers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgv-De-pKy">
-                        <rect key="frame" x="16" y="91" width="168" height="28"/>
+                        <rect key="frame" x="16" y="168" width="143" height="28"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -45,17 +45,16 @@
                 <constraint firstItem="Icg-iE-lOo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BRk-M8-Hgo"/>
                 <constraint firstAttribute="trailing" secondItem="VUr-hu-Pu9" secondAttribute="trailing" id="GDj-ys-spn"/>
                 <constraint firstAttribute="trailing" secondItem="qgv-De-pKy" secondAttribute="trailing" constant="16" id="hPW-jG-uBQ"/>
-                <constraint firstAttribute="bottom" secondItem="qgv-De-pKy" secondAttribute="bottom" constant="16" id="iPG-LU-p4g"/>
-                <constraint firstAttribute="bottom" secondItem="VUr-hu-Pu9" secondAttribute="bottom" id="pc4-sh-pwj"/>
+                <constraint firstAttribute="bottom" secondItem="qgv-De-pKy" secondAttribute="bottom" constant="24" id="iPG-LU-p4g"/>
                 <constraint firstAttribute="trailing" secondItem="Icg-iE-lOo" secondAttribute="trailing" id="qb4-Xd-tHM"/>
             </constraints>
-            <size key="customSize" width="319" height="179"/>
+            <size key="customSize" width="294" height="264"/>
             <connections>
                 <outlet property="palette" destination="Icg-iE-lOo" id="Tbc-4w-mAX"/>
                 <outlet property="previewImage" destination="VUr-hu-Pu9" id="pdf-vg-wYg"/>
                 <outlet property="previewName" destination="qgv-De-pKy" id="boZ-zA-9uB"/>
             </connections>
-            <point key="canvasLocation" x="110.86956521739131" y="34.486607142857139"/>
+            <point key="canvasLocation" x="92.028985507246389" y="61.607142857142854"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -34,12 +34,12 @@ class MainTableViewController: UITableViewController {
 		listsCollectionView.delegate = self
 		listsCollectionView.dataSource = self
 		listsCollectionView.register(UINib(nibName: listsCellID, bundle: nil), forCellWithReuseIdentifier: listsCellID)
-		
+
 		// TableView Setup
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.register(UINib(nibName: tickerCellID, bundle: nil), forCellReuseIdentifier: tickerCellID)
-		tableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: headerID)
+//		tableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: headerID)
 		tableView.rowHeight = UITableView.automaticDimension
     }
 	
@@ -79,12 +79,12 @@ class MainTableViewController: UITableViewController {
 		cell.setup(ticker: quotes[indexPath.row])
 		return cell
 	}
-
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! CustomHeader
-		headerCell.title = "Favourite"
-		return headerCell
-	}
+//
+//	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//		let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! CustomHeader
+//		headerCell.title = "Favourite"
+//		return headerCell
+//	}
 
 
 	//MARK: - Table View Delegate
@@ -140,7 +140,7 @@ extension MainTableViewController: UICollectionViewDataSource {
 extension MainTableViewController: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		CGSize(width: 220, height: 175)
+		CGSize(width: 175, height: 220)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -151,9 +151,6 @@ extension MainTableViewController: UICollectionViewDelegateFlowLayout {
 		8
 	}
 	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		16
-	}
 }
 
 
