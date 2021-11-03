@@ -100,6 +100,7 @@ class MainTableViewController: UITableViewController {
 		if let tickerVC = segue.destination as? TickerViewController {
 			guard let index = sender as? Int else { return }
 			tickerVC.ticker = quotes[index]
+			tickerVC.iexManager = iexManager
 		} else if let listVC = segue.destination as? ListTableViewController {
 			guard let index = sender as? Int else { return }
 			listVC.listType = lists[index].requestName

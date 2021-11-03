@@ -35,7 +35,7 @@ class CustomHeader: UITableViewHeaderFooterView {
 			titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
 			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
-		
+
 		titleLabel.font = UIFont(name: "System Bold", size: 25)
 		titleLabel.text = title
 		self.backgroundColor = .white
