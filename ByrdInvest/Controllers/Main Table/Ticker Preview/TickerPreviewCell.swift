@@ -30,7 +30,6 @@ class TickerPreviewCell: UITableViewCell {
 		logo.image = UIImage(named: "MOON")
 		getLogoURL(ticker: ticker.symbol)
 		setLogo()
-		
 	}
 	
 	func getLogoURL(ticker: String) {

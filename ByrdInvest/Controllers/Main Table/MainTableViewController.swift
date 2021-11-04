@@ -19,6 +19,7 @@ class MainTableViewController: UITableViewController {
 	let lists = ListPreview.getListsPreview()
 	
 	var quotes = [Quote]()
+	var logos = [UIImage]()
 	var user = User.getUser()
 	var favouriteTickers: [Quote]!
 	
@@ -174,6 +175,7 @@ extension MainTableViewController {
 			switch result {
 				case .success(let logo):
 					cell.logo.image = logo
+					self.logos.append(logo)
 					self.tableView.reloadData()
 				case .failure(let error):
 					print(error)

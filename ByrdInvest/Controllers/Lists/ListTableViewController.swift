@@ -19,7 +19,10 @@ class ListTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		getTickers()
+		
+		DispatchQueue.global().async {
+			self.getTickers()
+		}
 
 		title = listType.capitalized
 		tableView.delegate = self
@@ -71,6 +74,7 @@ class ListTableViewController: UITableViewController {
 		guard let tickerVC = segue.destination as? TickerViewController else { return }
 			guard let index = sender as? Int else { return }
 			tickerVC.ticker = quotes[index]
+			tickerVC.iexManager = iexManager
     }
     
 	

@@ -12,17 +12,17 @@ import UIKit
 //MARK: - Company Model
 
 struct Company: Decodable {
-	let symbol: String
-	let companyName: String
-	let exchange: String
-	let industry: String
-	let website: String
-	let description: String
-	let CEO: String
-	let sector: String
-	let employees: Int
-	let city: String
-	let country: String
+	let symbol: String?
+	let companyName: String?
+	let exchange: String?
+	let industry: String?
+	let website: String?
+	let description: String?
+	let CEO: String?
+	let sector: String?
+	let employees: Int?
+	let city: String?
+	let country: String?
 }
 
 
@@ -59,15 +59,15 @@ struct List: Decodable {
 //MARK: - Stats Model
 
 struct Stats: Decodable {
-	let companyName: String
-	let marketCap: Double?
-	let week52high: Double
-	let week52low: Double
-	let week52change: Double
-	let employees: Double
-	let ttmEPS: Double
-	let ttmDividendRate: Double
-	let dividendYield: Double
+	let companyName: String?
+	let marketcap: Double?
+	let week52high: Double?
+	let week52low: Double?
+	let week52change: Double?
+	let employees: Double?
+	let ttmEPS: Double?
+	let ttmDividendRate: Double?
+	let dividendYield: Double?
 	let nextDividendDate: String?
 	let exDividendDate: String?
 	let nextEarningsDate: String?
